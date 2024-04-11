@@ -18,6 +18,7 @@ const SliderInput = ({
   max,
   step,
   inputProps,
+  disabled, // Add disabled prop
 }) => (
   <Box sx={{ width: 250 }}>
     <Typography id={`${label}-input-slider`} gutterBottom>
@@ -33,6 +34,7 @@ const SliderInput = ({
           step={step}
           min={min}
           max={max}
+          disabled={disabled} // Pass disabled prop to Slider component
         />
       </Grid>
       <Grid item>
@@ -50,6 +52,7 @@ const SliderInput = ({
           onChange={(event) =>
             onChange(event.target.value === "" ? 0 : Number(event.target.value))
           }
+          disabled={disabled} // Pass disabled prop to Input component
         />
       </Grid>
     </Grid>
@@ -65,6 +68,25 @@ export default function InputSlider({
   recursion,
   activeComponent,
 }) {
+  const maxMap = {
+    pythagorasTree: { max: 100, min: 50, disabled: false },
+    sierpinskiCarpet: { max: 500, min: 50, disabled: false },
+    sierpinskiTriangle: { max: 500, min: 50, disabled: false },
+    kochSnowflake: { max: 500, min: 50, disabled: false },
+    kochAntiSnowflake: { max: 500, min: 10, disabled: false },
+    mandelbrot: { max: 500, min: 50, disabled: true },
+    mandelbrotColor: { max: 500, min: 50, disabled: true },
+  };
+  const recursionMap = {
+    pythagorasTree: { max: 5, min: 40, disabled: false },
+    sierpinskiCarpet: { max: 5, min: 0, disabled: false },
+    sierpinskiTriangle: { max: 5, min: 0, disabled: false },
+    kochSnowflake: { max: 5, min: 0, disabled: false },
+    kochAntiSnowflake: { max: 6, min: 0, disabled: false },
+    mandelbrot: { max: 1000, min: 0, disabled: false },
+    mandelbrotColor: { max: 10, min: 0, disabled: true },
+  };
+
   return (
     <>
       {activeComponent === "pythagorasTree" && (
@@ -75,6 +97,7 @@ export default function InputSlider({
           min={0}
           max={90}
           step={5}
+          disabled={maxMap[activeComponent].disabled} // Pass disabled prop
         />
       )}
 
@@ -82,27 +105,19 @@ export default function InputSlider({
         label="Recursion"
         value={recursion}
         onChange={(event, newValue) => setRecursion(newValue)}
-        min={0}
-        max={
-          activeComponent === "sierpinskiCarpet" ||
-          activeComponent === "sierpinskiTriangle"
-            ? 5
-            : 10
-        }
+        min={recursionMap[activeComponent].min}
+        max={recursionMap[activeComponent].max}
         step={1}
+        disabled={recursionMap[activeComponent].disabled} // Pass disabled prop
       />
       <SliderInput
         label="Width"
         value={width}
         onChange={(event, newValue) => setWidth(newValue)}
-        min={0}
-        max={
-          activeComponent === "sierpinskiCarpet" ||
-          activeComponent === "sierpinskiTriangle"
-            ? 500
-            : 200
-        }
+        min={maxMap[activeComponent].min}
+        max={maxMap[activeComponent].max}
         step={10}
+        disabled={maxMap[activeComponent].disabled} // Pass disabled prop
       />
     </>
   );

@@ -19,10 +19,8 @@ const SierpinskiCarpet = ({ initialWidth, recursionDepth }) => {
 
       const newSize = size / 3;
 
-      // Draw the central square
       drawSquare(ctx, x, y, newSize);
 
-      // Recursively draw the eight surrounding squares
       drawSierpinskiCarpet(ctx, x - newSize, y - newSize, newSize, depth - 1);
       drawSierpinskiCarpet(ctx, x, y - newSize, newSize, depth - 1);
       drawSierpinskiCarpet(ctx, x + newSize, y - newSize, newSize, depth - 1);

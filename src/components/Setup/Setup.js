@@ -64,6 +64,31 @@ const Setup = ({
         >
           Sierpinski Triangle
         </Button>
+        <Button
+          onClick={() => handleButtonClick("kochSnowflake", 5, 250)}
+          variant="contained"
+        >
+          Koch Snowflake
+        </Button>
+
+        <Button
+          onClick={() => handleButtonClick("kochAntiSnowflake", 5, 250)}
+          variant="contained"
+        >
+          Koch Anti Snowflake
+        </Button>
+        <Button
+          onClick={() => handleButtonClick("mandelbrot", 500, 0)}
+          variant="contained"
+        >
+          Mandelbrot
+        </Button>
+        <Button
+          onClick={() => handleButtonClick("mandelbrotColor", 5, 250)}
+          variant="contained"
+        >
+          Color Mandelbrot
+        </Button>
       </Box>
     </Box>
   );

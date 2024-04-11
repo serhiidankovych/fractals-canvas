@@ -7,6 +7,10 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Setup from "./components/Setup/Setup";
 import { Box } from "@mui/material";
+import KochSnowflake from "./components/Fractals/KochSnowflake";
+import KochAntiSnowflake from "./components/Fractals/KochAntiSnowflake";
+import Mandelbrot from "./components/Fractals/Mandelbrot";
+import MandelbrotColor from "./components/Fractals/MandelbrotColor";
 
 function App() {
   const [isDrawerShown, setIsDrawerShown] = React.useState(false);
@@ -36,6 +40,36 @@ function App() {
     },
     sierpinskiTriangle: {
       component: SierpinskiTriangle,
+      props: {
+        initialAngle: angle,
+        initialWidth: width,
+        recursionDepth: recursion,
+      },
+    },
+    kochSnowflake: {
+      component: KochSnowflake,
+      props: {
+        initialWidth: width,
+        recursionDepth: recursion,
+      },
+    },
+    kochAntiSnowflake: {
+      component: KochAntiSnowflake,
+      props: {
+        initialWidth: width,
+        recursionDepth: recursion,
+      },
+    },
+    mandelbrot: {
+      component: Mandelbrot,
+      props: {
+        initialAngle: angle,
+        initialWidth: width,
+        recursionDepth: recursion,
+      },
+    },
+    mandelbrotColor: {
+      component: MandelbrotColor,
       props: {
         initialAngle: angle,
         initialWidth: width,
